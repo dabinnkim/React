@@ -1,5 +1,6 @@
-1.import{useState} - useState 가져오기
+1.import{useState}
 
-2.useState(보관할자료) -보관할 자료 담기
+2.useState(보관할자료)
 
-3.let[a,b]
+3.let[a,b] -> a : state에 보관했던 자료 나옴 / b : state 변경 도와주는 함수
+*a,b
