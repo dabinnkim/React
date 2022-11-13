@@ -13,3 +13,4 @@ Q. 왜 state 써야함?
 state는 갑자기 변경될때 state 쓰던 html 자동 재렌더링됨   
 **자주 변경될것같은 html부분은 state로 만들어놓기
 
+
