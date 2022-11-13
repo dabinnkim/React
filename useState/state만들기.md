@@ -1,3 +1,5 @@
+# 🤍state 만들기
+
 ``` let[a,b] = useState(); ```
 
 1. import{useState}
