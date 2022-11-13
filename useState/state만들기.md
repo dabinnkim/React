@@ -4,9 +4,9 @@
 
 1. import{useState}
 
-1. useState(보관할자료)
+2. useState(보관할자료)
 
-3. let[a,b] - a : state에 보관한 자료 / b : state 변경함수
+3. let[state데이터,state데이터 변경 함수]
 
 Q. 왜 state 써야함?   
 일반변수는 갑자기 변경될때 html 자동으로 반영안됨   
