@@ -1,6 +1,6 @@
 # ✨state 만들기
 
-``` let[a,b] = useState(); ```
+``` let[a,b] = useState(a의 초기값); ```
 
 1. import{useState}
 
