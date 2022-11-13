@@ -1,4 +1,4 @@
-# let[a,b] = useState();
+``` let[a,b] = useState(); ```
 
 1. import{useState}
 
