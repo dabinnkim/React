@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Modal from '../src/component/Modal'
 import { useState } from 'react';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <h4>{글제목[2]}</h4>
         <p>2월 17일 발행</p>
       </div>
+      <Modal />
     </div>
   );
 }
