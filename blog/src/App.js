@@ -9,6 +9,7 @@ function App() {
   let [글제목,글제목변경] = useState(['남자 코트 추천','강남 우동 맛집','파이썬독학']);
   let [좋아요,좋아요변경] = useState(0);
   
+  
 
 
   return (
@@ -17,7 +18,12 @@ function App() {
         <h4 id={a}>포트폴리오</h4>
       </div>
       <div className='list'>
-        {/* 좋아요 버튼 만들기 */}
+        <button onClick={()=>{
+          let copy2=[...글제목];
+          글제목변경(copy2.sort());
+        }}>가나다순으로 정렬하기</button>
+
+
         <button onClick={()=>{
           let copy = [...글제목]; //array 원본 카피본 만들기
           copy[0] = '여자코트 추천'
