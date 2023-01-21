@@ -9,6 +9,7 @@ function App() {
   let a = '일반 변수'
   let [글제목,글제목변경] = useState(['남자 코트 추천','강남 우동 맛집','파이썬독학']);
   let [좋아요,좋아요변경] = useState(0);
+  let [modal, setModal] = useState(false); //모달창 상태 표현
   
   
 
@@ -42,7 +43,10 @@ function App() {
         <h4>{글제목[2]}</h4>
         <p>2월 17일 발행</p>
       </div>
-      <Modal />
+      {/* 삼항연산자 -> 조건식 ? 참일때 실행할 코드 : 거짓일때 실행할 코드*/}
+      {
+        1==1 ? '맞음' : '아님'
+      }
     </div>
   );
 }
