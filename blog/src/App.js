@@ -31,6 +31,10 @@ function App() {
           copy[0] = '여자코트 추천'
           글제목변경(copy);
           }}>글수정</button>
+          
+        <button onClick={()=>{
+          setModal(true)
+        }}>모달창 열기</button>
 
         <h4>{글제목[0]}<span onClick={()=>{좋아요변경(좋아요 + 1)}}>👍</span>{좋아요}</h4> {/* 👍누르면 이게함수 실행 */}
         <p>2월 17일 발행</p>
@@ -40,7 +44,7 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className='list'>
-        <h4 onClick={()=>{setModal(true)}}>{글제목[2]}</h4>
+        <h4>{글제목[2]}</h4>
         <p>2월 17일 발행</p>
       </div>
 
