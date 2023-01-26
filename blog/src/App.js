@@ -13,7 +13,9 @@ function App() {
 
 
   
-  
+  [1,2,3].map(function(a){
+    console.log(a);
+  })
 
 
   return (
