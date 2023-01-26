@@ -10,6 +10,8 @@ function App() {
   let [글제목,글제목변경] = useState(['남자 코트 추천','강남 우동 맛집','파이썬독학']);
   let [좋아요,좋아요변경] = useState(0);
   let [modal, setModal] = useState(false); //모달창 상태 표현
+
+
   
   
 
@@ -32,9 +34,7 @@ function App() {
           글제목변경(copy);
           }}>글수정</button>
           
-        <button onClick={()=>{
-          setModal(true)
-        }}>모달창 열기</button>
+        
 
         <h4>{글제목[0]}<span onClick={()=>{좋아요변경(좋아요 + 1)}}>👍</span>{좋아요}</h4> {/* 👍누르면 이게함수 실행 */}
         <p>2월 17일 발행</p>
@@ -48,12 +48,23 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
 
-      
-      {/* 삼항연산자 => 조건식 ? 참일때 실행할 코드 : 거짓일때 실행할 코드*/}
+      <button onClick={() => {  
+        setModal(!modal)
+      }}>모달창 열기</button>
+
+
+      {/* 
+      삼항연산자란
+      조건식 ? 참일때 실행할 코드 : 거짓일때 실행할 코드
+
+      버튼누르면 모달창 실행
+      modal == true인 조건이 맞으면 모달 컴포넌트 실행
+      */}
       
       {
         modal == true ? <Modal/> : null
       }
+
     </div>
   );
 }
