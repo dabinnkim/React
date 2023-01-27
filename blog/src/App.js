@@ -64,7 +64,7 @@ function App() {
       */}
       
       {
-        modal == true ? <Modal/> : null
+        modal == true ? <Modal 작명={글제목}/> : null
       }
 
       {
