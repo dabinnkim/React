@@ -63,9 +63,6 @@ function App() {
       조건식 ? 참일때 실행할 코드 : 거짓일때 실행할 코드
       */}
       
-      {
-        modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경}/> : null //props 문법
-      }
 
       {
         map==true? <Map/> : null
@@ -77,10 +74,10 @@ function App() {
 
       {/*비슷한 html map()함수 써서 반복하기*/}
       {
-        글제목.map(function (a,i) { //파라미터로 array 자료 꺼내기
+        글제목.map(function (a,i) { //파라미터로 array 자료 꺼내기, i는 0부터 시작하는 정수
           return (
             <div className='list' key={i}>
-              <h4>
+              <h4 onClick={()=>{setModal(true)}}> {/* 글제목 누르면 모달창 실행 */}
                 {글제목[i]}
                 <span onClick={()=>{
                   let copy = [...좋아요] //array 자료의 일부값만 바꾸는 경우 카피본 만들어야됨
@@ -93,6 +90,10 @@ function App() {
           )
         })
       }
+
+      {
+        modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경}/> : null //props 문법
+      }     
 
 
 
