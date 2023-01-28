@@ -64,7 +64,7 @@ function App() {
       */}
       
       {
-        modal == true ? <Modal 작명={글제목}/> : null //props 문법
+        modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경}/> : null //props 문법
       }
 
       {
@@ -75,9 +75,9 @@ function App() {
 
     
 
-      {/*비슷한 html map()로 반복하기*/}
+      {/*비슷한 html map()함수 써서 반복하기*/}
       {
-        글제목.map(function (a,i) { //파라미터로 글제목array 자료들 가져오기
+        글제목.map(function (a,i) { //파라미터로 array 자료 꺼내기
           return (
             <div className='list' key={i}>
               <h4>
