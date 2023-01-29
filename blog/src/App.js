@@ -66,7 +66,6 @@ function App() {
       조건식 ? 참일때 실행할 코드 : 거짓일때 실행할 코드
       */}
       
-
       {
         map==true? <Map/> : null
       }
@@ -77,33 +76,42 @@ function App() {
         글제목.map(function (a,i) { //파라미터로 array 자료 꺼내기, i는 0부터 시작하는 정수
           return (
             <div className='list' key={i}>
-              <h4 onClick={()=>{setModal(true); setTitle(i)}}> {/* 글제목 누르면 모달창 실행 + title 변경 */}
+              {/* 글제목 누르면 모달창 실행 + 모달창의 title 글제목과 같게 */}
+              <h4 onClick={()=>{setModal(true); setTitle(i)}}> 
                 {글제목[i]}
-                <span onClick={(e)=>{e.stopPropagation();
+                <span onClick={(e)=>{e.stopPropagation(); //stop블라블라 - 상위 html로 퍼지는 이벤트버블링 막음
                   let copy = [...좋아요] //array 자료의 일부값만 바꾸는 경우 카피본 만들어야됨
                   copy[i]+=1
-                  좋아요변경(copy)}}>
-                    👍</span> {좋아요[i]}
-                <button onClick={(e)=>{e.stopPropagation();}}>삭제</button>
+                  좋아요변경(copy)}}>👍
+                </span> {좋아요[i]}
               </h4>
               <p>2월 17일 발행</p>
+              {/* 글목록에서 삭제 */}
+              <button onClick={(e)=>{
+                  let copy = [...글제목];
+                  copy.splice(i,1); //i : 0부터 시작되는 정수, map 콜백함수에 있음
+                  글제목변경(copy);
+                }}>삭제</button>
             </div>
           )
         })
       }
+
+      {/* 버튼누르면 사용자가 입력한 글 목록에 추가 */}
+      <input onChange={(e) => {
+        입력값변경(e.target.value); //유저가 입력한 값 state에 저장
+      }} />
+      <button onClick={() => {
+        let copy = [...글제목];
+        copy.unshift(입력값) 
+        글제목변경(copy);
+      }}>글추가</button>
 
       {
         modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경} title={title}/> : null //props 문법
       }     
 
 
-      <input onChange={(e)=>{ //input에 입력한 값 array state에 저장
-        입력값변경(e.target.value); //유저가 입력한 값 state에 저장
-        }}/>
-
-      <button onClick={()=>{ //
-        글제목.push(입력값);
-        }}>글추가</button>
 
 
 
