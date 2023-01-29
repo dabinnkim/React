@@ -9,7 +9,7 @@ const Modal = (props) => {
     return (
         <>
             <div className='modal' style={{background : props.color}}>
-                <h4>{props.글제목[0]}</h4> {/* array에서 하나씩 가져와 */}
+                <h4>{props.글제목[props.title]}</h4> {/* array에서 하나씩 가져와 */}
                 <p>날짜</p>
                 <p>상세내용</p>
                 <button onClick={()=>{

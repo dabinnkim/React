@@ -12,7 +12,7 @@ function App() {
   let [좋아요,좋아요변경] = useState([0,0,0,0]); 
   let [modal, setModal] = useState(false); //모달창 초기 상태 false
   let [map,setMap] = useState(false);
-
+  let [title,setTitle] = useState(0); //0이면 남자 코트 추천
 
   return (
     <div className="App">
@@ -68,6 +68,8 @@ function App() {
         map==true? <Map/> : null
       }
 
+      
+
 
 
     
@@ -77,7 +79,7 @@ function App() {
         글제목.map(function (a,i) { //파라미터로 array 자료 꺼내기, i는 0부터 시작하는 정수
           return (
             <div className='list' key={i}>
-              <h4 onClick={()=>{setModal(true)}}> {/* 글제목 누르면 모달창 실행 */}
+              <h4 onClick={()=>{setModal(true); setTitle(i)}}> {/* 글제목 누르면 모달창 실행 + title 변경 */}
                 {글제목[i]}
                 <span onClick={()=>{
                   let copy = [...좋아요] //array 자료의 일부값만 바꾸는 경우 카피본 만들어야됨
@@ -92,7 +94,7 @@ function App() {
       }
 
       {
-        modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경}/> : null //props 문법
+        modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경} title={title}/> : null //props 문법
       }     
 
 
