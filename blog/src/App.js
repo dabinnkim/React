@@ -13,6 +13,8 @@ function App() {
   let [modal, setModal] = useState(false); //모달창 초기 상태 false
   let [map,setMap] = useState(false);
   let [title,setTitle] = useState(0); //0이면 남자 코트 추천
+  let [입력값, 입력값변경]=useState(''); // 유저가 쓴 문자를 저장할것이므로 기본값 공백
+  
 
   return (
     <div className="App">
@@ -58,6 +60,7 @@ function App() {
         setMap(!map);
       }}>지도 열기</button>
 
+      
       {/*
       삼항연산자
       조건식 ? 참일때 실행할 코드 : 거짓일때 실행할 코드
@@ -68,11 +71,6 @@ function App() {
         map==true? <Map/> : null
       }
 
-      
-
-
-
-    
 
       {/*비슷한 html map()함수 써서 반복하기*/}
       {
@@ -81,11 +79,12 @@ function App() {
             <div className='list' key={i}>
               <h4 onClick={()=>{setModal(true); setTitle(i)}}> {/* 글제목 누르면 모달창 실행 + title 변경 */}
                 {글제목[i]}
-                <span onClick={()=>{
+                <span onClick={(e)=>{e.stopPropagation();
                   let copy = [...좋아요] //array 자료의 일부값만 바꾸는 경우 카피본 만들어야됨
                   copy[i]+=1
                   좋아요변경(copy)}}>
                     👍</span> {좋아요[i]}
+                <button onClick={(e)=>{e.stopPropagation();}}>삭제</button>
               </h4>
               <p>2월 17일 발행</p>
             </div>
@@ -96,6 +95,19 @@ function App() {
       {
         modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경} title={title}/> : null //props 문법
       }     
+
+
+      <input onChange={(e)=>{ //input에 입력한 값 array state에 저장
+        입력값변경(e.target.value); //유저가 입력한 값 state에 저장
+        }}/>
+
+      <button onClick={()=>{ //
+        글제목.push(입력값);
+        }}>글추가</button>
+
+
+
+
 
 
 
