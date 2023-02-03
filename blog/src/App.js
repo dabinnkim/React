@@ -99,13 +99,24 @@ function App() {
 
       {/* 버튼누르면 사용자가 입력한 글 목록에 추가 */}
       <input onChange={(e) => {
-        입력값변경(e.target.value); //유저가 입력한 값 state에 저장
+        입력값변경(e.target.value); //유저가 input에 입력한 값 가져오고 state에 저장
       }} />
       <button onClick={() => {
         let copy = [...글제목];
         copy.unshift(입력값) 
         글제목변경(copy);
       }}>글추가</button>
+
+      
+      <input onChange={(e)=>{
+        입력값변경(e.target.value);
+      }}/>
+
+      <button onClick={()=>{
+        let copy =[...글제목];
+        copy.unshift(입력값); //unshift : array 맨처음 추가
+        글제목변경(copy);
+      }}>글추가연습</button>
 
       {
         modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경} title={title}/> : null //props 문법
