@@ -3,13 +3,13 @@ import './App.css';
 import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import data from './data';
-import Shose from './compo/Shose';
+import Shoes from './compo/Shoes';
 
 
 
 function App() {
 
-  let [shose] = useState(data);
+  let [shoes] = useState(data);
 
 
 
@@ -27,7 +27,7 @@ function App() {
       </Navbar>
       <div className='main-bg'></div>
       <Row>
-        <Shose shose={shose}/> {/* props로 state 자식컴포에 보내기 */}
+        <Shoes shoes={shoes}/> {/* props로 state 자식컴포에 보내기 */}
       </Row>
       
      
