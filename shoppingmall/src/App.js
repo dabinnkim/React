@@ -2,18 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
-import data from './data.js'
+import data from './data';
+import Shose from './compo/Shose';
+
 
 
 function App() {
 
+  let [shose] = useState(data);
 
-  let [shose,setShose] = useState();
 
 
   return (
     <div className="App">
-      {data}
       <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -24,28 +25,11 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-
       <div className='main-bg'></div>
-
-      <div className='container'>
-        <Row>
-          <Col>
-            <img src="https://codingapple1.github.io/shop/shoes4.jpg"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img src="https://codingapple1.github.io/shop/shoes7.jpg"/>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-        </Row>
-      </div>
+      <Row>
+        <Shose shose={shose}/> {/* props로 state 자식컴포에 보내기 */}
+      </Row>
+      
      
 
 
