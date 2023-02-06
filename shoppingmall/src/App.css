@@ -47,3 +47,10 @@ img{
     transform: rotate(360deg);
   }
 }
+
+/*nav bar*/
+.me-auto a{
+  text-decoration-line: none;
+  padding:5px;
+  color:#747474;
+}
