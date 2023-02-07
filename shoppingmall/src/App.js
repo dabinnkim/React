@@ -13,7 +13,7 @@ import Event from './compo/Event';
 
 function App() {
 
-  let [shoes] = useState(data);
+  let [shoes,setShoes] = useState(data);
   let navigate = useNavigate(); //페이지 이동
 
   return (
@@ -33,7 +33,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Card shoes={shoes}/>}/>
-        <Route path="/cart" element={<Cart/>} />
+        <Route path="/cart/:id" element={<Cart shoes={shoes} setShoes={setShoes}/>}></Route>
         <Route path="/about" element={<About/>}>
           <Route path="member" element={<div>멤버임</div>} /> {/* memeber == /about/member */}
           <Route path="location" element={<dib>위치정보임</dib>} />

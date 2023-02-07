@@ -19,6 +19,12 @@ const Card = (props) => {
                 })
             }
             </div>
+            <div>
+                <button onClick={()=>{
+                    let copy=[...props.shoes]//array data값 카피본 만들기
+                    props.setShoes(copy.sort()); //카피본 만든것 정렬시켜서 shoes 변경함수에 넣기
+                }}>가나다순 정렬</button>
+            </div>
         </div>
         </>
   )
