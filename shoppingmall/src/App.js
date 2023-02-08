@@ -12,7 +12,7 @@ import Event from './compo/Event';
 
 
 function App() {
-
+  
   let [shoes,setShoes] = useState(data);
   let navigate = useNavigate(); //페이지 이동
 

@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Modal from '../src/component/Modal'
 import Map from '../src/component/Map'
+import Login from '../src/component/Login'
 import { useState } from 'react';
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <h4 id={a}>포트폴리오</h4>
+        <h4 id={a}>포트폴리오|</h4>
       </div>
+      <Login/>
 
 
       <div className='list'>
