@@ -3,7 +3,7 @@ import './App.css';
 import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import data from './data';
-import Card from './compo/Card';
+import Main from './compo/Main';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Cart from './compo/Cart';
 import About from './compo/About';
@@ -15,6 +15,9 @@ function App() {
   
   let [shoes,setShoes] = useState(data);
   let navigate = useNavigate(); //페이지 이동
+
+
+
 
   return (
     <div className="App">
@@ -32,8 +35,8 @@ function App() {
 
 
       <Routes>
-        <Route path="/" element={<Card shoes={shoes}/>}/>
-        <Route path="/cart/:id" element={<Cart shoes={shoes} setShoes={setShoes}/>}></Route>
+        <Route path="/" element={<Main shoes={shoes} />}/>
+        <Route path="/cart/:id" element={<Cart shoes={shoes} setShoes={setShoes} />}></Route>
         <Route path="/about" element={<About/>}>
           <Route path="member" element={<div>멤버임</div>} /> {/* memeber == /about/member */}
           <Route path="location" element={<dib>위치정보임</dib>} />
