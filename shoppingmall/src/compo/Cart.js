@@ -24,6 +24,8 @@ const Cart = (props) => {
         }
     })
     
+    
+    let [userInput,setUserInput] = useState("") //사용자 인풋값
 
     return (
         <div className="container">
@@ -38,7 +40,15 @@ const Cart = (props) => {
                     <img src={"https://codingapple1.github.io/shop/shoes"+(Number(usernum)+1)+".jpg"} width="100%" />
                 </div>
                 <div className="col-md-6">
-                    <input type='text'></input>
+                    {
+                        isNaN(userInput)==true? <div className="alert" style={{backgroundColor:"red"}}>경고창 숫자만 쓰시오</div> : null
+                    }
+                    {/* 숫자말고 다른거 입력하면 경고창*/}
+                    {
+
+                    }
+                    <input type='text' onChange={(e)=>{
+                        setUserInput(e.target.value)}}></input>
                     <h4 className="pt-5">{상품.title}</h4>
                     <p>{상품.content}</p>
                     <p>{상품.price}</p>
