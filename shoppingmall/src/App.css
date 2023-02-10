@@ -5,8 +5,10 @@
   background-position: center; /*사진 기준점을 센터로*/
 }
 
+
 img{
   width: 80%;
+  cursor: pointer;
 }
 
 .App {

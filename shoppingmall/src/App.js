@@ -25,10 +25,13 @@ function App() {
     
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand onClick={()=>{navigate('/event')}}>ShoesShop</Navbar.Brand>
+          <Navbar.Brand onClick={()=>{navigate('/')}}>ShoesShop</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>       
             <Nav.Link onClick={()=>{navigate('/cart')}}>Cart</Nav.Link>   
+            <Nav.Link onClick={()=>{navigate('/about')}}>About</Nav.Link>   
+            <Nav.Link onClick={()=>{navigate('/event')}}>Event</Nav.Link>   
+
           </Nav>
         </Container>
       </Navbar>
