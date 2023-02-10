@@ -44,11 +44,8 @@ const Cart = (props) => {
                         isNaN(userInput)==true? <div className="alert" style={{backgroundColor:"red"}}>경고창 숫자만 쓰시오</div> : null
                     }
                     {/* 숫자말고 다른거 입력하면 경고창*/}
-                    {
 
-                    }
-                    <input type='text' onChange={(e)=>{
-                        setUserInput(e.target.value)}}></input>
+                    <input type='text' onChange={(e)=>{setUserInput(e.target.value)}}></input>
                     <h4 className="pt-5">{상품.title}</h4>
                     <p>{상품.content}</p>
                     <p>{상품.price}</p>
