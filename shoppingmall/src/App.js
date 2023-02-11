@@ -8,6 +8,7 @@ import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Cart from './compo/Cart';
 import About from './compo/About';
 import Event from './compo/Event';
+import axios from 'axios';
 
 
 
@@ -36,6 +37,11 @@ function App() {
         </Container>
       </Navbar>
 
+      <button onClick={()=>{
+        axios.get('https://codingapple1.github.io/shop/data2.json').then((결과)=>{
+          console.log(결과.data)
+        })
+      }}>누르면 데이터 GET 요청</button>
 
       <Routes>
         <Route path="/" element={<Main shoes={shoes} />}/>
