@@ -42,7 +42,14 @@ let navigate=useNavigate();
                                 props.setShoes(copy);
                             })
                             .catch(() => { console.log('요청실패') });
-                    }}>누르면 서버에 GET 요청</button>
+                        axios
+                            .get('https://codingapple1.github.io/shop/data3.json')
+                            .then((res1)=>{
+                                let copy1=[...props.shoes, ...res1.data]
+                                console.log(copy1)
+                                props.setShoes(copy1);
+                            })
+                    }}>상품더보기</button>
 
                    
 
