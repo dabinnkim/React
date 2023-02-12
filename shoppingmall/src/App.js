@@ -14,6 +14,7 @@ import Event from './compo/Event';
 function App() {
   
   let [shoes,setShoes] = useState(data);
+
   let navigate = useNavigate(); //페이지 이동
 
 
@@ -37,7 +38,7 @@ function App() {
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<Main shoes={shoes} />}/>
+        <Route path="/" element={<Main shoes={shoes} setShoes={setShoes}/>}/>
         <Route path="/cart/:usernum" element={<Cart shoes={shoes} setShoes={setShoes} />}></Route>
         <Route path="/about" element={<About/>}>
           <Route path="member" element={<div>멤버임</div>} /> {/* memeber == /about/member */}

@@ -9,7 +9,7 @@ const Main = (props) => {
 
 let navigate=useNavigate();
 
-let [getData,setGetData] = useState([]);
+// let [getData,setGetData] = useState([]);
 
     
     return (
@@ -31,34 +31,24 @@ let [getData,setGetData] = useState([]);
                         })
                     }
 
-                    {
-                        getData.map((a, i) => {
-                            return (
-                                <div className='col-md-4'>
-                                    <img src={'https://codingapple1.github.io/shop/shoes' + (i + 4) + '.jpg'} />
-                                    <h4>{getData[i].title}</h4>
-                                    <p>{getData[i].content}</p>
-                                    <p>{getData[i].price}</p>
-                                </div>
-                            )
-                        })
-                    }
+                    <button onClick={() => {
+                        axios
+                            .get('https://codingapple1.github.io/shop/data2.json')
+                            .then((res) => {
+                                console.log(props.shoes);
+                                console.log(res.data);
+                                let copy = [...props.shoes, ...res.data]; //array에 array 더하기
+                                console.log(copy)
+                                props.setShoes(copy);
+                            })
+                            .catch(() => { console.log('요청실패') });
+                    }}>누르면 서버에 GET 요청</button>
+
+                   
+
                 </div>
 
-            </div>
-            <button onClick={()=>{
-                axios
-                .get('https://codingapple1.github.io/shop/data2.json')
-                .then((res)=>{
-                    setGetData(res.data);
-                    console.log(res.data);
-                    console.log('성공');
-                })
-                .catch(()=>{console.log('요청실패')});
-            }}>누르면 서버에 GET 요청</button>
-                 
-            
-            
+            </div>         
         </>
     )
 }
