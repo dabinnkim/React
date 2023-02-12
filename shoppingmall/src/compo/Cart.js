@@ -16,21 +16,26 @@ const Cart = (props) => {
     let [alert,setAlert] = useState(true)
 
     useEffect(()=>{
-        let a = setTimeout(()=>{setAlert(false)},2000) //2초 후에 코드 실행
-        console.log(2)
+        let timer = setTimeout(()=>{setAlert(false)},2000) //2초 후에 setAlert(false) 실행
         return()=>{
-            console.log(1)
-            clearTimeout(a)
+            clearTimeout(timer); //2초에 한번씩 setAlert(false) 코드 실행되므로 삭제해줘야함
         }
-    })
+    },[])
+
     
-    
-    let [userInput,setUserInput] = useState("") //사용자 인풋값
+    let [userInput,setUserInput] = useState("") //사용자 input 값
+
+    //마운트 + [useInput] 변경될때만 실행 
+    useEffect(()=>{
+        if( isNaN(userInput)==true){
+            console.log('숫자만 입력하셈')
+        }
+    }, [userInput])
 
     return (
         <div className="container">
             {
-                alert==true? <div className='alert alert-warning'>2초 후에 사라지는 창</div> : null
+                alert && <div className='alert alert-warning'>2초 후에 사라지는 창</div>
             }
             
             {count}
@@ -40,12 +45,13 @@ const Cart = (props) => {
                     <img src={"https://codingapple1.github.io/shop/shoes"+(Number(usernum)+1)+".jpg"} width="100%" />
                 </div>
                 <div className="col-md-6">
-                    {
+                    {/* {
                         isNaN(userInput)==true? <div className="alert" style={{backgroundColor:"red"}}>경고창 숫자만 쓰시오</div> : null
-                    }
+                    } */}
                     {/* 숫자말고 다른거 입력하면 경고창*/}
 
                     <input type='text' onChange={(e)=>{setUserInput(e.target.value)}}></input>
+                    <span>사용자가 인풋한 값:{userInput}</span>
                     <h4 className="pt-5">{상품.title}</h4>
                     <p>{상품.content}</p>
                     <p>{상품.price}</p>
