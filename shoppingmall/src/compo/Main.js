@@ -53,13 +53,7 @@ let [load,setLoad] = useState(false)
                                 console.log('요청실패')
                                 setLoad(false)//로딩종료
                             });
-                        axios
-                            .get('https://codingapple1.github.io/shop/data3.json')
-                            .then((res1)=>{
-                                let copy1=[...props.shoes, ...res1.data]
-                                console.log(copy1)
-                                props.setShoes(copy1);
-                            })
+                        axios.post('/https://codingapple1.github.io/shop/data2.json',{name:"kim"})
                     }}>상품더보기</button>
 
                    
