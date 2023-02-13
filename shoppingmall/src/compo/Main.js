@@ -11,6 +11,10 @@ let navigate=useNavigate();
 
 // let [getData,setGetData] = useState([]);
 
+let [btn,setBtn] = useState(0)
+
+let [load,setLoad] = useState(false)
+
     
     return (
         <>
@@ -30,18 +34,25 @@ let navigate=useNavigate();
                             )
                         })
                     }
-
+                    {
+                        load==true? <div>로딩중잼</div> : null
+                    }
                     <button onClick={() => {
+                        setLoad(true) //로딩중
                         axios
                             .get('https://codingapple1.github.io/shop/data2.json')
                             .then((res) => {
                                 console.log(props.shoes);
                                 console.log(res.data);
-                                let copy = [...props.shoes, ...res.data]; //array에 array 더하기
+                                let copy = [...props.shoes, ...res.data]; //array에 array 추가하기
                                 console.log(copy)
                                 props.setShoes(copy);
+                                setLoad(false)//로딩종료
                             })
-                            .catch(() => { console.log('요청실패') });
+                            .catch(() => {
+                                console.log('요청실패')
+                                setLoad(false)//로딩종료
+                            });
                         axios
                             .get('https://codingapple1.github.io/shop/data3.json')
                             .then((res1)=>{
