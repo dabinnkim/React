@@ -78,12 +78,12 @@ const Cart = (props) => {
     )
 }
 
-function TabContent(props){
-    if(props.tab==0){
+function TabContent({tab}){
+    if(tab==0){
         return <div>내용0</div>
-    }else if(props.tab==1){
+    }else if(tab==1){
         return <div>내용1</div>
-    }else if(props.tab==2){
+    }else if(tab==2){
         return <div>내용2</div>
     }
 }
