@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useParams, useSearchParams} from 'react-router-dom'
+import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
 import '../App.css';
 
 const Cart = (props) => {
@@ -22,8 +23,8 @@ const Cart = (props) => {
         }
     },[])
 
-    
-    let [userInput,setUserInput] = useState("") //사용자 input 값
+    //사용자 input 값
+    let [userInput,setUserInput] = useState("")
 
     //마운트 + [useInput] 변경될때만 실행 
     useEffect(()=>{
@@ -31,6 +32,9 @@ const Cart = (props) => {
             console.log('숫자만 입력하셈')
         }
     }, [userInput])
+
+    //탭변경
+    let[tab,setTab] = useState(0);
 
     return (
         <div className="container">
@@ -58,8 +62,30 @@ const Cart = (props) => {
                     <button className="btn btn-danger">주문하기</button>
                 </div>
             </div>
+            <Nav variant="tabs" defaultActiveKey="link0">
+                <Nav.Item>
+                    <Nav.Link onClick={()=>{setTab(0)}} eventKey="link0">버튼0</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link onClick={()=>{setTab(1)}} eventKey="link1">버튼1</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link onClick={()=>{setTab(2)}} eventKey="link2">버튼2</Nav.Link>
+                </Nav.Item>
+            </Nav>
+            <TabContent tab={tab}/>
         </div>
     )
+}
+
+function TabContent(props){
+    if(props.tab==0){
+        return <div>내용0</div>
+    }else if(props.tab==1){
+        return <div>내용1</div>
+    }else if(props.tab==2){
+        return <div>내용2</div>
+    }
 }
 
 export default Cart
