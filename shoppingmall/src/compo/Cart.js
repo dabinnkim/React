@@ -79,8 +79,17 @@ const Cart = (props) => {
 }
 
 function TabContent({tab}){
+    let [fade,setFade] = useState('')
+
+    useEffect(()=>{
+        setFade('end')
+        return()=>{
+            setFade('')
+        }
+    },[tab]) //tab state가 변경될때마다 실행
+
     if(tab==0){
-        return <div>내용0</div>
+        return <div className={'start '+ fade}>내용0</div> //문자 중간에 변수 넣는법 중괄호 안의 문자열에 +, 띄어쓰기 유의
     }else if(tab==1){
         return <div>내용1</div>
     }else if(tab==2){
