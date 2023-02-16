@@ -3,13 +3,13 @@ import {useParams, useSearchParams} from 'react-router-dom'
 import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
 import '../App.css';
 
-const Cart = (props) => {
+const Cart = ({shoes}) => {
 
     // 사용자가 입력한 url 파라미터를 가져와줌
     let {usernum} = useParams(); 
 
     //usernum과 같은 id를 가진 상품을 출력해야됨
-    let 상품 = props.shoes.find(num => num.id==usernum) 
+    let 상품 = shoes.find(num => num.id==usernum) 
 
 
     let[count,setCount] = useState(0)
@@ -36,8 +36,18 @@ const Cart = (props) => {
     //탭변경
     let[tab,setTab] = useState(0);
 
+    //cart 컴포넌트가 실행될때 애니메이션 효과
+    let [cart,setCart] = useState('')
+
+    useEffect(()=>{
+        setCart('end')
+        return()=>{
+            setCart('')
+        }
+    },[])
+
     return (
-        <div className="container">
+        <div className={`container start ${cart}`}>
             {
                 alert && <div className='alert alert-warning'>2초 후에 사라지는 창</div>
             }
@@ -73,28 +83,40 @@ const Cart = (props) => {
                     <Nav.Link onClick={()=>{setTab(2)}} eventKey="link2">버튼2</Nav.Link>
                 </Nav.Item>
             </Nav>
-            <TabContent tab={tab}/>
+                <TabContent tab={tab}/>
         </div>
     )
 }
 
 function TabContent({tab}){
+
+
     let [fade,setFade] = useState('')
 
+    //tab state가 변경될때마다 실행
     useEffect(()=>{
-        setFade('end')
+        let a = setTimeout(()=>{setFade('end')},100)
         return()=>{
+            clearTimeout(a)
             setFade('')
         }
-    },[tab]) //tab state가 변경될때마다 실행
+    },[tab]) 
+    
+    // if(tab==0){
+    //     return <div>내용0</div> 
+    // }else if(tab==1){
+    //     return <div>내용1</div>
+    // }else if(tab==2){
+    //     return <div>내용2</div>
+    // }
 
-    if(tab==0){
-        return <div className={'start '+ fade}>내용0</div> //문자 중간에 변수 넣는법 중괄호 안의 문자열에 +, 띄어쓰기 유의
-    }else if(tab==1){
-        return <div>내용1</div>
-    }else if(tab==2){
-        return <div>내용2</div>
-    }
+    return (
+        <div className={`start ${fade}`}> {/*문자 중간에 변수 넣는법 띄어쓰기 유의*/}
+            {[<div>내용0</div>,<div>내용1</div>,<div>내용2</div>][tab]}
+        </div>
+    )
+        
+    
 }
 
 export default Cart
