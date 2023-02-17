@@ -1,13 +1,19 @@
 import React from 'react'
 import { Table } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
 const Basket = () => {
+
+   let a = useSelector((state)=>state.stock)
+    console.log(a)
+
     return (
         <Table>
             <thead>
                 <tr> {/* 행 */}
                     <th>#</th> {/* 열 */}
-                    <th>상품명</th>
+                    <th>{a}</th>
                     <th>수량</th>
                     <th>변경하기</th>
                 </tr>
