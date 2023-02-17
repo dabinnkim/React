@@ -8,6 +8,7 @@ import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import Cart from './compo/Cart';
 import About from './compo/About';
 import Event from './compo/Event';
+import Basket from './compo/Basket';
 
 
 
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main shoes={shoes} setShoes={setShoes}/>}/>
         <Route path="/cart/:usernum" element={<Cart shoes={shoes} setShoes={setShoes} />}></Route>
+        <Route path="/basket" element={<Basket/>}></Route>
         <Route path="/about" element={<About/>}>
           <Route path="member" element={<div>멤버임</div>} /> {/* memeber == /about/member */}
           <Route path="location" element={<dib>위치정보임</dib>} />
