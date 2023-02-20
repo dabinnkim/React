@@ -4,14 +4,14 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 let user = createSlice({
     name:'user', //이름
     initialState:'kim', //초기값
-    reducers:{
+    reducers:{ //변경함수
         setUser(state){
             return 'join ' + state
         }
     }
 })
 
-export let {setUser} = user.actions //state 변경함수들 남음
+export let {setUser} = user.actions //만든 변경함수 export로 내보내기
 
 
 //useState와 비슷

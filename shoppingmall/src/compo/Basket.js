@@ -1,14 +1,16 @@
 import React from 'react'
 import { Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
-import {setUser} from './../store';
+import {setUser} from './../store'; //store에서 state 변경함수 가져옴
 const Basket = () => {
 
     //useSelector : store에 있는 state 전체 가져오기 
-   let state = useSelector((state)=>state) //원하는 state만 가져올수도 있음
-   //store.js에 요청 보내주는 함수
-   let dispatch = useDispatch
+    let state = useSelector((state)=>state) //원하는 state만 가져올수도 있음
+    console.log(state.user)
+
+
+   //store.js에 state변경함수 요청
+   let dispatch = useDispatch()
 
     return (
         <Table>
@@ -28,10 +30,10 @@ const Basket = () => {
                                 <td>#</td> {/* 열 */}
                                 <td>{state.basket[i].name}</td>
                                 <td>{state.basket[i].count}</td>
-                                <td>안녕</td>
+                                <td>{state.user}</td>
                                 <td>
                                     <button onClick={()=>{
-                                        setUser()
+                                        dispatch(setUser())
                                     }}>+</button>
                                 </td>
                             </tr>
