@@ -11,9 +11,11 @@ let navigate=useNavigate();
 
 // let [getData,setGetData] = useState([]);
 
-let [btn,setBtn] = useState(0)
+
 
 let [load,setLoad] = useState(false)
+
+
 
     
     return (
@@ -35,7 +37,7 @@ let [load,setLoad] = useState(false)
                         })
                     }
                     {
-                        load==true? <div>로딩중잼</div> : null
+                        load===true? <div>로딩중잼</div> : null
                     }
                     <button onClick={() => {
                         setLoad(true) //로딩중
@@ -55,9 +57,6 @@ let [load,setLoad] = useState(false)
                             });
                         axios.post('/https://codingapple1.github.io/shop/data2.json',{name:"kim"})
                     }}>상품더보기</button>
-
-                   
-
                 </div>
 
             </div>         
