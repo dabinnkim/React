@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
-
+import basket from './store/basketSlice'
 //useState랑 비슷
 let user = createSlice({
     name:'user', //이름
@@ -11,7 +11,7 @@ let user = createSlice({
     }
 })
 
-export let {setUser} = user.actions //만든 변경함수 export로 내보내기
+ //만든 변경함수 export로 내보내기
 
 
 //useState와 비슷
@@ -20,13 +20,9 @@ let stock = createSlice({
     initialState:[10,11,12] //state 초기값
 })
 
-let basket = createSlice({
-    name:'basket',
-    initialState:[
-        {id : 0, name : 'White and Black', count : 2},
-        {id : 2, name : 'Grey Yordan', count : 1}
-      ] 
-})
+
+
+
 
 export default configureStore({
     //state 등록
@@ -37,3 +33,6 @@ export default configureStore({
     
   }
 }) 
+
+export let {setUser} = user.actions
+export let {increase} = basket.actions

@@ -2,6 +2,8 @@ import React from 'react'
 import { Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import {setUser} from './../store'; //store에서 state 변경함수 가져옴
+
+
 const Basket = () => {
 
     //useSelector : store에 있는 state 전체 가져오기 
