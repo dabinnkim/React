@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import basket from './store/basketSlice'
+
 //useState랑 비슷
 let user = createSlice({
     name:'user', //이름
