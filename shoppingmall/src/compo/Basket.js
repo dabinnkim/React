@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import {setUser} from './../store'; //store에서 state 변경함수 가져옴
-
+import { increase } from '../store/basketSlice';
 
 const Basket = () => {
 
@@ -35,7 +35,7 @@ const Basket = () => {
                                 <td>{state.user}</td>
                                 <td>
                                     <button onClick={()=>{
-                                        dispatch(setUser())
+                                        dispatch(increase(state.basket[i].id))
                                     }}>+</button>
                                 </td>
                             </tr>
