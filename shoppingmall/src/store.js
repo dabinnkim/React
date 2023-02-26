@@ -36,4 +36,4 @@ export default configureStore({
 }) 
 
 export let {setUser} = user.actions
-export let {increase} = basket.actions
+export let {increase, addItem, removeItem} = basket.actions

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import {setUser, increase} from './../store'; //store에서 state 변경함수 가져옴
+import { removeItem, increase } from '../store/basketSlice';
+//store에서 state 변경함수 가져옴
 
 const Basket = () => {
     
     //useSelector : store에 있는 state 전체 가져오기 
     let state = useSelector((state)=>state) //원하는 state만 가져올수도 있음
-    console.log(state.user)
+    console.log(state.basket)
 
 
    //useDispatch : store에 있는 state변경함수 가져오기
@@ -39,8 +40,8 @@ const Basket = () => {
                                 </td>
                                 <td>
                                     <button onClick={()=>{
-                                        dispatch(setUser())
-                                    }}>+</button>
+                                        dispatch(removeItem(state.basket[i].id))
+                                    }}>삭제</button>
                                 </td>
                             </tr>
                         </tbody>               

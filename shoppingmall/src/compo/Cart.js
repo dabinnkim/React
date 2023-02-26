@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react'
 import {useParams, useSearchParams} from 'react-router-dom'
 import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
 import '../App.css';
+import { useSelector, useDispatch } from 'react-redux';
+import {addItem} from '../store'
 
 const Cart = ({shoes}) => {
+    let state = useSelector((state)=>state)
+    console.log(state.basket)
+
+    let dispatch = useDispatch()
 
     // 사용자가 입력한 url 파라미터를 가져와줌
     let {usernum} = useParams(); 
@@ -28,7 +34,7 @@ const Cart = ({shoes}) => {
 
     //마운트 + [useInput] 변경될때만 실행 
     useEffect(()=>{
-        if( isNaN(userInput)==true){
+        if( isNaN(userInput)===true){
             console.log('숫자만 입력하셈')
         }
     }, [userInput])
@@ -71,7 +77,9 @@ const Cart = ({shoes}) => {
                     <p>{상품.content}</p>
                     <p>{상품.price}</p>
                     {/* 주문하기 누르면 장바구니에 항목 추가시키기 */}
-                    <button className="btn btn-danger">주문하기</button>
+                    <button className="btn btn-danger" onClick={()=>{
+                        dispatch(addItem({id : `{${상품.id}}`, name : `${상품.content}`, count : 1}))
+                    }}>주문하기</button>
                 </div>
             </div>
             
@@ -115,7 +123,7 @@ function TabContent({tab}){
 
     return (
         <div className={`start ${fade}`}> {/*문자 중간에 변수 넣는법 띄어쓰기 유의*/}
-            {[<div>내용0</div>,<div>내용1</div>,<div>내용2</div>][tab]}
+            {[<div>내용0</div>,<div>내용1</div>,<div>내용2</div>][tab]} {/* array[i] 원하는 요소 인덱싱 */}
         </div>
     )
         
