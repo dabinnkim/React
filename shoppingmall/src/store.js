@@ -30,7 +30,7 @@ export default configureStore({
   reducer: { 
     user : user.reducer,
     stock : stock.reducer,
-    basket : basket.reducer
+    basket : basket.reducer //바깥에 만들어둠
     
   }
 }) 

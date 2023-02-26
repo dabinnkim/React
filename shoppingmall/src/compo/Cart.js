@@ -45,6 +45,7 @@ const Cart = ({shoes}) => {
             setCart('')
         }
     },[])
+    
 
     return (
         <div className={`container start ${cart}`}>
@@ -69,9 +70,11 @@ const Cart = ({shoes}) => {
                     <h4 className="pt-5">{상품.title}</h4>
                     <p>{상품.content}</p>
                     <p>{상품.price}</p>
+                    {/* 주문하기 누르면 장바구니에 항목 추가시키기 */}
                     <button className="btn btn-danger">주문하기</button>
                 </div>
             </div>
+            
             <Nav variant="tabs" defaultActiveKey="link0">
                 <Nav.Item>
                     <Nav.Link onClick={()=>{setTab(0)}} eventKey="link0">버튼0</Nav.Link>
