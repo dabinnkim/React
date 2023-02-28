@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {useParams, useSearchParams} from 'react-router-dom'
-import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
+import {useParams } from 'react-router-dom'
+import { Nav } from 'react-bootstrap';
 import '../App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {addItem} from '../store'
 
 const Cart = ({shoes}) => {
-    let state = useSelector((state)=>state)
-    console.log(state.basket)
+    let state = useSelector((state)=>state) //store의 state
 
     let dispatch = useDispatch()
 
@@ -51,7 +50,15 @@ const Cart = ({shoes}) => {
             setCart('')
         }
     },[])
-    
+
+
+
+    useEffect(()=>{
+        let 꺼내기 = localStorage.getItem('watch')
+        꺼내기 = JSON.parse(꺼내기)
+        꺼내기.push(상품.id)
+        localStorage.setItem('watch',JSON.stringify(꺼내기))
+    },[])
 
     return (
         <div className={`container start ${cart}`}>
