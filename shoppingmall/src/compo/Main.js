@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import '../App.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,  } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 
@@ -9,14 +10,19 @@ const Main = (props) => {
 
 let navigate=useNavigate();
 
-// let [getData,setGetData] = useState([]);
+
+
+
+const obj = {name:'kim'};
+localStorage.setItem('data',JSON.stringify(obj));
+const 꺼낸것 = localStorage.getItem('data')
+console.log(JSON.parse(꺼낸것).name);
+
+
 
 
 
 let [load,setLoad] = useState(false)
-
-
-
     
     return (
         <>
@@ -37,7 +43,7 @@ let [load,setLoad] = useState(false)
                         })
                     }
                     {
-                        load===true? <div>로딩중잼</div> : null
+                        load===true? <Spinner animation="border" variant="primary" /> : null
                     }
                     <button onClick={() => {
                         setLoad(true) //로딩중

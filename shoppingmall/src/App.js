@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import data from './data';
 import Main from './compo/Main';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
@@ -18,7 +18,9 @@ function App() {
 
   let navigate = useNavigate(); //페이지 이동
 
-
+  useEffect(()=>{
+    localStorage.setItem('watch',JSON.stringify([]))
+},[])
 
 
   return (
