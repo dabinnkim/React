@@ -8,7 +8,7 @@ const Basket = () => {
     
     //useSelector : store에 있는 state 전체 가져오기 
     let state = useSelector((state)=>state) //원하는 state만 가져올수도 있음
-    console.log(state.basket)
+
 
 
    //useDispatch : store에 있는 state변경함수 가져오기
