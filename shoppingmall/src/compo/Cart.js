@@ -57,6 +57,8 @@ const Cart = ({shoes}) => {
         let 꺼내기 = localStorage.getItem('watch')
         꺼내기 = JSON.parse(꺼내기)
         꺼내기.push(상품.id)
+        꺼내기 = new Set(꺼내기)
+        꺼내기 = Array.from(꺼내기)
         localStorage.setItem('watch',JSON.stringify(꺼내기))
     },[])
 
