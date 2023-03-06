@@ -9,7 +9,8 @@ import Cart from './compo/Cart';
 import About from './compo/About';
 import Event from './compo/Event';
 import Basket from './compo/Basket';
-
+import axios from 'axios'
+import {useQuery} from 'react-query'
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
   useEffect(()=>{
     localStorage.setItem('watch',JSON.stringify([]))
 },[])
+
+
+
 
 
   return (
@@ -36,8 +40,8 @@ function App() {
             <Nav.Link onClick={()=>{navigate('/about')}}>About</Nav.Link>   
             <Nav.Link onClick={()=>{navigate('/event')}}>Event</Nav.Link>   
             <Nav.Link onClick={()=>{navigate('/basket')}}>장바구니</Nav.Link> 
-
           </Nav>
+          <Nav className="ms-auto">반가워요 kim</Nav>
         </Container>
       </Navbar>
 
