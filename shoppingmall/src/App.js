@@ -1,17 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import data from './data';
 import Main from './compo/Main';
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
-import Cart from './compo/Cart';
+// import Cart from './compo/Cart';
 import About from './compo/About';
 import Event from './compo/Event';
 import Basket from './compo/Basket';
 import axios from 'axios'
 import {useQuery} from 'react-query'
 
+const Cart = lazy(()=>import('./compo/Cart.js'));
 
 function App() {
   
@@ -55,6 +56,7 @@ let result = useQuery('작명',()=>{
         </Container>
       </Navbar>
 
+      <Suspense fallback={<div>로딩중입니다.</div>}>
       <Routes>
         <Route path="/" element={<Main shoes={shoes} setShoes={setShoes}/>}/>
         <Route path="/cart/:usernum" element={<Cart shoes={shoes} setShoes={setShoes} />}></Route>
@@ -68,6 +70,7 @@ let result = useQuery('작명',()=>{
           <Route path="two" element={<div>생일기념 쿠폰받기</div>}></Route>
         </Route>       
       </Routes>
+      </Suspense>
 
 
 
