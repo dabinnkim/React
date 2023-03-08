@@ -24,7 +24,13 @@ function App() {
 },[])
 
 
+let result = useQuery('작명',()=>{
+  return axios.get('https://codingapple1.github.io/userdata.json').then((a)=>a.data)
+})
 
+// console.log(result.data) //ajax 요청이 성공했을때 가져오는 데이터 들어있음
+// console.log(result.isLoading) //ajax요청이 로딩중일때 true, 로딩중 아닐때 false
+// console.log(result.error) // ajax 요청이 실패했을때
 
 
   return (
@@ -41,7 +47,11 @@ function App() {
             <Nav.Link onClick={()=>{navigate('/event')}}>Event</Nav.Link>   
             <Nav.Link onClick={()=>{navigate('/basket')}}>장바구니</Nav.Link> 
           </Nav>
-          <Nav className="ms-auto">반가워요 kim</Nav>
+          <Nav className="ms-auto">
+            {result.isLoading && '로딩중'}
+            {result.error && '에러남'}
+            {result.data && result.data.name}
+          </Nav>
         </Container>
       </Navbar>
 
