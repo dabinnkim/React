@@ -12,6 +12,7 @@ import Basket from './compo/Basket';
 import axios from 'axios'
 import {useQuery} from 'react-query'
 
+//lazy함수로 import
 const Cart = lazy(()=>import('./compo/Cart.js'));
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 },[])
 
 
+//react-query로 실시간 데이터 요청
 let result = useQuery('작명',()=>{
   return axios.get('https://codingapple1.github.io/userdata.json').then((a)=>a.data)
 })
@@ -35,9 +37,7 @@ let result = useQuery('작명',()=>{
 
 
   return (
-    <div className="App">
-
-    
+    <div className="App">    
       <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand onClick={()=>{navigate('/')}}>ShoesShop</Navbar.Brand>

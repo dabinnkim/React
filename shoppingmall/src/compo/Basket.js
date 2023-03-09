@@ -1,20 +1,39 @@
-import React from 'react'
+import {React, useState, memo} from 'react'
 import { Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, increase } from '../store/basketSlice';
 //store에서 state 변경함수 가져옴
 
+
+//memo함수로 필요할때만 자식컴포 재렌더링
+let Child = memo(function(){
+    console.log('재렌더링됨')
+    return <div>자식임</div>
+})
+
+
+
 const Basket = () => {
-    
+
+
     //useSelector : store에 있는 state 전체 가져오기 
     let state = useSelector((state)=>state) //원하는 state만 가져올수도 있음
 
+    //useDispatch : store에 있는 state변경함수 가져오기
+    let dispatch = useDispatch()
 
+    let [count,setCount] = useState(0)
 
-   //useDispatch : store에 있는 state변경함수 가져오기
-   let dispatch = useDispatch()
+    const onClick =()=>{
+        return setCount(count+1)
+    }
 
     return (
+        <>
+        <div><Child count={count}></Child></div>
+        <h6>{state.user}의 장바구니</h6>
+        <button onClick={onClick}>증가버튼</button>
+        <div>{count}</div>
         <Table>
             <thead>
                 <tr>
@@ -48,10 +67,8 @@ const Basket = () => {
                )
                
             }
-
-            
-            
         </Table>
+        </>
     )
 }
 
