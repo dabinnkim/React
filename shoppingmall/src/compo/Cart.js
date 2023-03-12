@@ -87,7 +87,8 @@ const Cart = ({shoes}) => {
                     <p>{상품.price}</p>
                     {/* 주문하기 누르면 장바구니에 항목 추가시키기 */}
                     <button className="btn btn-danger" onClick={()=>{
-                        dispatch(addItem({id : `{${상품.id}}`, name : `${상품.content}`, count : 1}))
+                        dispatch(addItem({id : Number(`${상품.id}`), name : `${상품.title}`, count : 1}))
+                        console.log(state)
                     }}>주문하기</button>
                 </div>
             </div>
