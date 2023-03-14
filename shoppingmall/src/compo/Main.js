@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../App.css';
 import { useNavigate,  } from 'react-router-dom';
 import axios from 'axios';
@@ -19,13 +19,28 @@ const 꺼낸것 = localStorage.getItem('data')
 console.log(JSON.parse(꺼낸것).name);
 
 
-
-
-
 let [load,setLoad] = useState(false)
-    
+
+
+let[count,setCount] = useState(0);
+let[age, setAge] = useState(20);
+
+
+//async test
+useEffect(()=>{
+    if(count!=0 && count<3){
+        setAge(age+1)
+    }  
+},[count])
+
+function onClick(){
+    setCount(count+1) //얘가너무 늦게 실행됨
+}
+
     return (
         <>
+            <div>안녕하십니까 전 {age} 살입니다</div>
+            <button onClick={onClick}>누르면 한살먹기</button>
             <div className='main-bg'></div> {/* 맨위 운동화 이미지 */}
             <div className='container'>
                 <div className='row'>
