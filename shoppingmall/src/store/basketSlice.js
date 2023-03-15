@@ -29,7 +29,6 @@ let basket = createSlice({
 
         removeItem(state,action){
             let num = state.findIndex((e)=>e.id === action.payload)
-            alert(action.payload)
             state.splice(num,1)
         }
     }
