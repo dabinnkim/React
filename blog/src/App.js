@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Modal from '../src/component/Modal'
 import Map from '../src/component/Map'
@@ -23,7 +22,7 @@ function App() {
         <h4 id={a}>포트폴리오|</h4>
       </div>
       <Login/>
-
+      <Map/>
 
       <div className='list'>
         <button onClick={()=>{

@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -16,7 +16,7 @@ const Login = () => {
     <Container component="main" maxWidth="xs">
         <Box sx={{marginTop:8, display:'flex', flexDirection:'column', alignItems:'center'}}>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                <LockOutlinedIcon />
+                {/* <LockOutlinedIcon /> */}
             </Avatar>
             <Typography component="h1" variant="h5">
                 Sign in
