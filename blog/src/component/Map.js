@@ -22,6 +22,20 @@ const Map = () => {
         // 지도를 표시할 div와 지도 옵션으로 지도를 생성
         const map = new kakao.maps.Map(container, options);
 
+         // 키워드 검색을 요청하는 함수입니다
+         const searchPlaces = () => {
+
+            var keyword = document.getElementById('keyword').value;
+  
+            if (!keyword.replace(/^\s+|\s+$/g, '')) {
+              alert('키워드를 입력해주세요!');
+              return false;
+            }
+  
+            // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+            ps.keywordSearch(keyword, placesSearchCB);
+          }
+
         var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
         var marker = new kakao.maps.Marker({
           position: markerPosition
@@ -93,6 +107,15 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
         displayCircleDot(clickPosition, distance);
     }
 });
+
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+    var latlng = mouseEvent.latLng;
+    var latitude = latlng.getLat();
+    var longitude = latlng.getLng();
+    console.log('Latitude: ' + latitude + ', Longitude: ' + longitude);
+  });
+
+  
     
 // 지도에 마우스무브 이벤트를 등록합니다
 // 선을 그리고있는 상태에서 마우스무브 이벤트가 발생하면 그려질 선의 위치를 동적으로 보여주도록 합니다
