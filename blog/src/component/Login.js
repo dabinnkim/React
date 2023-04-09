@@ -21,8 +21,8 @@ const Login = () => {
             <Typography component="h1" variant="h5">
                 Sign in
             </Typography>
-            <TextField id='email' required margin="normal" label='Email Address' fullWidth autoComplete='email' autoFocus/>
-            <TextField id='password' type='password' required margin="normal" label='Password' fullWidth autoComplete='current-password'/>
+            <TextField id='email' variant="standard" required margin="normal" label='Email Address' fullWidth autoComplete='email' autoFocus/>
+            <TextField id='password' variant="standard" type='password' required margin="normal" label='Password' fullWidth autoComplete='current-password'/>
             <FormControlLabel control={<Checkbox value="remember" color="primary"/>} label='Remember me'/>        
             <Button type='submit' variant='contained' fullWidth sx={{mt:3, mb:2}}>Sign In</Button>
             <Grid container sx={{mb:3}}>
