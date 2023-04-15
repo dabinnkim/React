@@ -1,5 +1,5 @@
 # React
-📁blog</br>
+📁TIL</br>
 ·React 학습기록
 
 📁server</br>
