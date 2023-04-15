@@ -8,7 +8,8 @@ const { kakao } = window;
 
 const Map = () => {
 
-    let [출발, set출발] = useState('');
+    const [출발, set출발] = useState('');
+    const [출발저장, set출발저장] = useState('');
 
     useEffect(() => {
         const container = document.getElementById('myMap');//지도를 표시할 div
@@ -23,18 +24,18 @@ const Map = () => {
         const map = new kakao.maps.Map(container, options);
 
          // 키워드 검색을 요청하는 함수입니다
-         const searchPlaces = () => {
+        const searchPlaces = () => {
 
-            var keyword = document.getElementById('keyword').value;
-  
-            if (!keyword.replace(/^\s+|\s+$/g, '')) {
-              alert('키워드를 입력해주세요!');
-              return false;
-            }
-  
-            // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-            ps.keywordSearch(keyword, placesSearchCB);
+          var keyword = document.getElementById('keyword').value;
+
+          if (!keyword.replace(/^\s+|\s+$/g, '')) {
+            alert('키워드를 입력해주세요!');
+            return false;
           }
+
+          // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+          ps.keywordSearch(keyword, placesSearchCB);
+        }
 
         var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
         var marker = new kakao.maps.Marker({
@@ -321,7 +322,8 @@ function getTimeHTML(distance) {
 var ps = new kakao.maps.services.Places(); 
 
 // 키워드로 장소를 검색합니다
-ps.keywordSearch(`${출발}`, placesSearchCB);
+ps.keywordSearch(`${출발저장
+}`, placesSearchCB);
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
@@ -381,7 +383,9 @@ function displayMarker(place) {
         <>
             <div id='myMap' style={{width: '500px',height: '500px'}}></div>
             <p><em>지도를 클릭해주세요!</em></p>
-            <input type='text' onChange={(e)=>{set출발(e.target.value)}}></input><button onClick={()=>{console.log(출발)}}>검색</button>
+            <input type='text' onChange={(e)=>{set출발(e.target.value)}}>
+            </input><button onClick={()=>{set출발저장(출발)}}>검색</button>
+            <div>검색 : {출발저장}</div>
             {/* <button onClick={setCenter}>지도 중심좌표 이동시키기</button> */}
             {/* <button onClick={panTo}>지도 중심좌표 부드럽게 이동시키기</button> */}
             
