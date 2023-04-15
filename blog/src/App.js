@@ -12,8 +12,39 @@ function App() {
   let [좋아요,좋아요변경] = useState([0,0,0,0]); 
   let [modal, setModal] = useState(false); //모달창 초기 상태 false
   let [map,setMap] = useState(false);
-  let [title,setTitle] = useState(0); //0이면 남자 코트 추천
+  let [title,setTitle] = useState(0); //글제목의 인덱스값
   let [입력값, 입력값변경]=useState(''); // 유저가 쓴 문자를 저장할것이므로 기본값 공백
+
+  const [text,setText] = useState("");
+  const [name,setName] = useState("");
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  }
+
+  const handleConfirm = () => {
+    setName(text);
+    console.log(name)
+  }
+
+  const onClick = ()=>{
+    글제목변경([...글제목].sort())
+  }
+
+  const [글수정,set글수정] = useState('');
+  // const [글수정담기,set글수정담기] = useState('')
+
+
+
+
+
+  
+  const 글추가 = () =>{
+    let copy = [...글제목]
+    copy.unshift(입력값)
+    글제목변경(copy)
+  }
+
   
 
   return (
@@ -24,11 +55,19 @@ function App() {
       <Login/>
       <Map/>
 
+      <div>
+        <input type='text' name='test' onChange={handleChange}></input>
+        <button onClick={handleConfirm}>버튼</button>
+        <p>input 입력값 : {name}</p>
+      </div>
+
       <div className='list'>
         <button onClick={()=>{
-          let copy2=[...글제목];
-          글제목변경(copy2.sort());
+          let copy2=[...글제목]; //array니까 복사본 만들고
+          글제목변경(copy2.sort()); //복사본 오름차순 정렬해서 변경함수에 넣기
         }}>가나다순으로 정렬하기</button>
+      
+        <button onClick={onClick}>가나다순 정렬 복습</button>
 
         <button onClick={()=>{
           let copy = [...글제목]; //array 원본 카피본 만들기
@@ -36,36 +75,17 @@ function App() {
           글제목변경(copy);
           }}>글수정</button>
           
-        <h4>{글제목[0]}<span onClick={()=>{좋아요변경(좋아요 + 1)}}>👍</span>{좋아요}</h4> {/* 👍누르면 이게함수 실행 */}
-        <p>2월 17일 발행</p>
-      </div>
-
-
-      <div className='list'>
-        <h4>{글제목[1]}</h4>
-        <p>2월 17일 발행</p>
-      </div>
-
-
-      <div className='list'>
-        <h4>{글제목[2]}</h4>
-        <p>2월 17일 발행</p>
-      </div>
-
-      <button onClick={() => {  
-        setModal(!modal);
-      }}>모달창 열기</button>
+        
+        <button onClick={() => {  
+          setModal(!modal);
+         }}>모달창 열기</button>
       
 
-      <button onClick={()=>{
-        setMap(!map);
-      }}>지도 열기</button>
+        <button onClick={()=>{
+          setMap(!map);
+         }}>지도 열기</button>
+      </div>
 
-      
-      {/*
-      삼항연산자
-      조건식 ? 참일때 실행할 코드 : 거짓일때 실행할 코드
-      */}
       
       {
         map==true? <Map/> : null
@@ -84,7 +104,7 @@ function App() {
                   let copy = [...좋아요] //array 자료의 일부값만 바꾸는 경우 카피본 만들어야됨
                   copy[i]+=1
                   좋아요변경(copy)}}>👍
-                </span> {좋아요[i]}
+                  </span> {좋아요[i]}
               </h4>
               <p>2월 17일 발행</p>
               {/* 글목록에서 삭제 */}
@@ -92,7 +112,7 @@ function App() {
                   let copy = [...글제목];
                   copy.splice(i,1); //i : 0부터 시작되는 정수, map 콜백함수에 있음
                   글제목변경(copy);
-                }}>삭제</button>
+              }}>삭제</button>
             </div>
           )
         })
@@ -100,11 +120,11 @@ function App() {
 
       {/* 버튼누르면 사용자가 입력한 글 목록에 추가 */}
       <input onChange={(e) => {
-        입력값변경(e.target.value); //유저가 input에 입력한 값 가져오고 state에 저장
+        입력값변경(e.target.value); //유저가 input에 입력한 값 state에 저장
       }} />
       <button onClick={() => {
         let copy = [...글제목];
-        copy.unshift(입력값) 
+        copy.unshift(입력값) //배열의 맨 앞에 추가
         글제목변경(copy);
       }}>글추가</button>
 
@@ -119,9 +139,25 @@ function App() {
         글제목변경(copy);
       }}>글추가연습</button>
 
+      <button onClick={글추가}>글추가복습</button>
+
+
       {
-        modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경} title={title}/> : null //props 문법
-      }     
+        modal == true ? <Modal color='orange' 글제목={글제목} 글제목변경={글제목변경} 글수정={글수정} set글수정={set글수정} title={title}/> : null //props 문법
+      }  
+      <br></br>
+      <div>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡmap함수 복습ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</div>   
+      <br></br>
+
+      {
+        글제목.map((a,i)=>{
+          return (
+            <>
+            <h4 style={{backgroundColor:"skyblue"}}>{글제목[i]}</h4>      
+            </>
+          )
+        })
+      }
 
 
 
