@@ -25,6 +25,11 @@ const Modal = (props) => {
                     let copy = [...props.글제목]
                     copy[props.title]=`${props.글수정}` //클릭한 항목만 수정
                     props.글제목변경(copy) //수정된값 담기
+                }}>글수정해주는 버튼</button> 
+                <button onClick={()=>{
+                    let copy = [...props.글제목]
+                    copy[props.title]=`${props.글수정}` //클릭한 항목만 수정
+                    props.글제목변경(copy) //수정된값 담기
                 }}>글수정해주는 버튼</button>     
             </div>
         </>
