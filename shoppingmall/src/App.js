@@ -17,8 +17,7 @@ const Cart = lazy(()=>import('./compo/Cart.js'));
 
 function App() {
   
-  let [shoes,setShoes] = useState(data);
-
+  let [shoes,setShoes] = useState(data); //state에 담을 데이터 너무 커서 파일 따로 만들음
   let navigate = useNavigate(); //페이지 이동
 
   useEffect(()=>{
