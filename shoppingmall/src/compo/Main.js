@@ -28,7 +28,7 @@ let[age, setAge] = useState(20);
 
 //async test
 useEffect(()=>{
-    if(count!=0 && count<3){
+    if(count!==0 && count<3){
         setAge(age+1)
     }  
 },[count])
@@ -37,19 +37,28 @@ function onClick(){
     setCount(count+1) //얘가너무 늦게 실행됨
 }
 
+let [dabin,setDabin] = useState(30);
+
+function onClick2(){
+    setDabin(dabin+1);
+}
+
     return (
         <>
             <div>안녕하십니까 전 {age} 살입니다</div>
             <button onClick={onClick}>누르면 한살먹기</button>
-            <div className='main-bg'></div> {/* 맨위 운동화 이미지 */}
+            <div>안녕하세요 저는 김다빈 이구요 {dabin}살입니다 <button onClick={onClick2}>한살먹기</button></div>
+           
+           {/* 메인 운동화 이미지 */}
+            <div className='main-bg'></div>
+             
             <div className='container'>
                 <div className='row'>
                     {
-                        (props.shoes).map((a, i) => { //props로 부모 컴포넌트의 shoes state 가져오고 map 함수로 state 데이터 요소갯수만큼 코드 반복
+                        (props.shoes).map((a, i) => { //props로 부모 컴포넌트에 있는 shoes state 가져오고, map 함수로 state 데이터 요소갯수만큼 코드 반복
                             return (
                                 <div className='col-md-4'>
-                                    <img src={'https://codingapple1.github.io/shop/shoes' + (i + 1) + '.jpg'}
-                                    onClick={()=>{navigate('/cart/'+ i)}}/> {/*이미지 클릭하면 cart 라우터로 이동*/}
+                                    <img src={'https://codingapple1.github.io/shop/shoes' + (i + 1) + '.jpg'} width="80%" onClick={()=>{navigate('/cart/'+ i)}}/> {/*이미지 클릭하면 cart 라우터로 이동*/}
                                     <h4>{props.shoes[i].title}</h4>
                                     <p>{props.shoes[i].content}</p>
                                     <p>{props.shoes[i].price}원</p>
@@ -57,6 +66,7 @@ function onClick(){
                             )
                         })
                     }
+                    
                     {
                         load===true? <Spinner animation="border" variant="primary" /> : null
                     }
