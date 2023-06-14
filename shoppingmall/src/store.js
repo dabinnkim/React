@@ -5,9 +5,9 @@ import basket from './store/basketSlice'
 let user = createSlice({
     name:'user', //이름
     initialState:'kim', //초기값
-    reducers:{ //변경함수
-        setUser(state){
-            return 'join ' + state
+    reducers:{
+        setUser(state){ //state : 기존 초기값 state를 의미
+            return 'john' + state
         }
     }
 })
@@ -29,9 +29,8 @@ export default configureStore({
     //state 등록
   reducer: { 
     user : user.reducer,
-    stock : stock.reducer,
+    stock: stock.reducer,
     basket : basket.reducer //바깥에 만들어둠
-    
   }
 }) 
 

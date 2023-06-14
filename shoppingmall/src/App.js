@@ -57,7 +57,7 @@ let result = useQuery('작명',()=>{
 
       <Suspense fallback={<div>로딩중입니다.</div>}>
       <Routes>
-        <Route path="/" element={<Main shoes={shoes} setShoes={setShoes}/>}/>
+        <Route path="/" element={<Main shoes={shoes} setShoes={setShoes}/>}/> {/* 각컴포넌트에서 받아야할 shoes state props로 보냄 */}
         <Route path="/cart/:usernum" element={<Cart shoes={shoes} setShoes={setShoes} />}></Route>
         <Route path="/basket" element={<Basket/>}></Route>
         <Route path="/about" element={<About/>}>
