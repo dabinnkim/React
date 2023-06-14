@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {addItem} from '../store'
 
 const Cart = ({shoes}) => {
-    let state = useSelector((state)=>state) //store의 state
+
+    let state = useSelector((state)=>state) //store의 state 가져와서 쓰겠다
+    console.log(state)
 
     let dispatch = useDispatch()
 
@@ -41,14 +43,16 @@ const Cart = ({shoes}) => {
     //탭변경
     let[tab,setTab] = useState(0);
 
-    //cart 컴포넌트가 실행될때 애니메이션 효과
+    //cart 컴포넌트가 첫실행될때 애니메이션 효과
     let [cart,setCart] = useState('')
 
     useEffect(()=>{
-        setCart('end')
-        return()=>{
+        setTimeout(()=>{
+            setCart('end')
+        },100)
+        return(
             setCart('')
-        }
+        )
     },[])
 
 
@@ -63,7 +67,7 @@ const Cart = ({shoes}) => {
     },[])
 
     return (
-        <div className={`container start ${cart}`}>
+        <div className={`container start ${cart} `}>
             {
                 alert && <div className='alert alert-warning'>2초 후에 사라지는 창</div>
             }
@@ -116,24 +120,19 @@ function TabContent({tab}){
 
     //tab state가 변경될때마다 실행
     useEffect(()=>{
-        let a = setTimeout(()=>{setFade('end')},100)
-        return()=>{
-            clearTimeout(a)
+        setTimeout(()=>{
+            setFade('end')
+        },300)
+        return(
             setFade('')
-        }
-    },[tab]) 
+        )
+    },[tab])
     
-    // if(tab==0){
-    //     return <div>내용0</div> 
-    // }else if(tab==1){
-    //     return <div>내용1</div>
-    // }else if(tab==2){
-    //     return <div>내용2</div>
-    // }
+
 
     return (
-        <div className={`start ${fade}`}> {/*문자 중간에 변수 넣는법 띄어쓰기 유의*/}
-            {[<div>내용0</div>,<div>내용1</div>,<div>내용2</div>][tab]} {/* array[i] 원하는 요소 인덱싱 */}
+        <div className={`start ${fade}`}> {/*className에 end가 붙으면 transition 적용*/}
+            {[<div>내용0</div>,<div>내용1</div>,<div>내용2</div>][tab]} {/* [tab]으로 원하는 요소 인덱싱 */}
         </div>
     )
         
